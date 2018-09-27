@@ -29,28 +29,25 @@
 import axios from 'axios';
 
 export default {
-    name: 'renderComic',
-    data() {
-        return {
-            comic: {},
-            comicId: this.$route.params.id,
-        };
+  name: 'renderComic',
+  data() {
+    return {
+      comic: {},
+      comicId: this.$route.params.id,
+    };
+  },
+  methods: {
+    getComic() {
+      axios.get(`https://gateway.marvel.com/v1/public/comics/${this.comicId}?ts=1&apikey=32be8dade9f3f1c42a40133a2d2bad14&hash=574ff2ad80c8bb9f2148ca5bc2be2d67`)
+        .then((response) => {
+          this.comic = response.data.data.results[0];
+        }).catch((err) => {console.log(err)});
     },
-    methods: {
-        getComic() {
-            axios.get(`https://gateway.marvel.com/v1/public/comics/${this.comicId}?ts=1&apikey=32be8dade9f3f1c42a40133a2d2bad14&hash=574ff2ad80c8bb9f2148ca5bc2be2d67`)
-                .then(response => {
-                    this.comic = response.data.data.results[0];
-                }).catch(err => {
-                    console.log(err);
-                })
-        }
-    },
-    created() {
-        this.getComic();
-    }
-    
-}
+  },
+  created() {
+    this.getComic();
+  },
+};
 </script>
 <style scoped>
     .comic {

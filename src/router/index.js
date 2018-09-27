@@ -15,7 +15,7 @@ export default new Router({
       component: MarvelApi,
     },
     {
-      path: '/detail/:id',
+      path: '/detailComic/:id',
       component: renderComic,
     },
     /*{
@@ -27,7 +27,7 @@ export default new Router({
       component: MarvelApi,
     },*/
     {
-      path: '/detailP/:name',
+      path: '/detailCharacter/:name',
       component: renderCharacter,
     },
   ],
