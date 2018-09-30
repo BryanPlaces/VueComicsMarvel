@@ -2,11 +2,10 @@
   <div class="MarvelApi">
     <buscador v-on:obtenerComicsPorTitulo='comicsPorTitulo' v-on:obtenerPersonajeNombre='busquedaPersonaje'></buscador>
     <lista-de-comics v-on:numberComics='totalComics' :tituloComic="tituloComic" :personajeNombre="personajeNombre" :numero="numero" :pageOnecurrentPage="pageOne.currentPage"></lista-de-comics>
-    <pagination v-on:recargar='prueba' :numComics="numComics" :tituloComic="tituloComic"
+    <pagination v-if="this.numComics>12" v-on:recargar='prueba' :numComics="numComics" :tituloComic="tituloComic"
       :current-page="pageOne.currentPage"
       :total-pages="pageOne.totalPages"
-      @page-changed="pageOneChanged"      
-      
+      @page-changed="pageOneChanged"
     ></pagination>
   </div>
 </template>
@@ -55,9 +54,11 @@ export default {
       this.numero = b;
     },
     comicsPorTitulo: function(b) {
+      this.personajeNombre = "";
       this.tituloComic = b;
     },
     busquedaPersonaje: function(b) {
+      this.tituloComic = "";
       this.personajeNombre = b;
     },
     totalComics: function(b) {

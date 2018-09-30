@@ -46,19 +46,27 @@ export default {
 			axios.get(`https://gateway.marvel.com/v1/public/characters?limit=12&nameStartsWith=${this.personajeNombre}&ts=1&apikey=32be8dade9f3f1c42a40133a2d2bad14&hash=574ff2ad80c8bb9f2148ca5bc2be2d67`)
 			.then(response => {
 				this.comicsList = response.data.data.results;
-				this.totalComics = response.data.data.total;				
-			})            
+				this.totalComics = response.data.data.total;
+				this.tituloComic === "";			
+				this.$emit('numberComics',this.totalComics);
+			})
 		},
 		//pageOnecurrentPage antes era numero
 		pageOnecurrentPage:function() {
 			let aux = (this.pageOnecurrentPage-1)*12;
 			if (this.tituloComic) {
 
-			axios.get(`http://gateway.marvel.com/v1/public/comics?limit=12&offset=${aux}&ts=1&apikey=32be8dade9f3f1c42a40133a2d2bad14&hash=574ff2ad80c8bb9f2148ca5bc2be2d67&titleStartsWith=` + this.tituloComic)
-			.then(response => {
-				this.comicsList = response.data.data.results;
-			});
+				axios.get(`http://gateway.marvel.com/v1/public/comics?limit=12&offset=${aux}&ts=1&apikey=32be8dade9f3f1c42a40133a2d2bad14&hash=574ff2ad80c8bb9f2148ca5bc2be2d67&titleStartsWith=` + this.tituloComic)
+				.then(response => {
+					this.comicsList = response.data.data.results;
+				});
 
+
+			}else if(this.personajeNombre) {
+				axios.get(`https://gateway.marvel.com/v1/public/characters?limit=12&offset=${aux}&ts=1&apikey=32be8dade9f3f1c42a40133a2d2bad14&hash=574ff2ad80c8bb9f2148ca5bc2be2d67&nameStartsWith=` + this.personajeNombre)
+				.then(response => {
+					this.comicsList = response.data.data.results;
+				})
 			}else {
 				axios.get(`https://gateway.marvel.com/v1/public/comics?limit=12&offset=${aux}&orderBy=-focDate&ts=1&apikey=32be8dade9f3f1c42a40133a2d2bad14&hash=574ff2ad80c8bb9f2148ca5bc2be2d67`)
 				.then(response => {

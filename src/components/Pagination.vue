@@ -1,19 +1,5 @@
 <template>
-  <div>
-    <!-- <div v-if="this.tituloComic">
-      <div v-for="(p, index) in paginas" :key="index">
-        <a href="#" @click="$emit('recargar',p)">{{p}}</a>
-      </div>
-    </div>
-    
-    <div v-else>
-      <div v-for="(p, index) in paginas" :key="index">
-        <a href="#" @click="$emit('recargar',p)">{{p}}</a>
-      </div>
-    </div> -->
-
-
-
+  <div class="pag">
 
     <div>
       <ul class="pagination">
@@ -114,6 +100,58 @@ export default {
 </script>
 
 <style scoped>
+
+.pag {
+  background-color: #bd1023;
+  height: 50px;
+
+  box-shadow: 0 -4px 20px 0 rgba(0,0,0,.75);
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index:2000;
+}
+
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+
+  /* background: #bd1023;
+  border: 1px solid #7C7C7C;*/
+  list-style: none; 
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+ul.pagination li a{
+  color: #fff;
+  display: block;
+  padding: .3em;
+  text-decoration: none;
+}
+
+ul.pagination li {
+  float: left;
+  width: 4%;
+}
+
+ul.pagination {
+  overflow: hidden;
+}
+
+/* ul.pagination li a {
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #7C7C7C;
+} */
+
 
 </style>
 

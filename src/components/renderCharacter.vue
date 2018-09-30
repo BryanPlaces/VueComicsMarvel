@@ -1,7 +1,7 @@
 <template>
-  <div>  
+  <div class="renderCharacter">  
     <div>
-      <img :src="comic.thumbnail.path + '.' + comic.thumbnail.extension">
+      <img class="imagen" :src="comic.thumbnail.path + '.' + comic.thumbnail.extension">
     </div>
     <div class="comicInfo">
       <h1>{{this.comicName}}</h1>
@@ -47,4 +47,52 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  background-color: #4e4e4e;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.renderCharacter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.imagen {
+  margin-top: 50px;
+  height: 300px;
+  width: 300px;
+}
+
+.comicInfo{
+  margin-top: 50px;
+  margin-right: 50px;
+  background-color: #333;
+}
+
+ul {
+  text-align: left;
+  list-style: none; 
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+li {
+  background-color: #676767;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+</style>
 

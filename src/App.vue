@@ -58,8 +58,8 @@ h1 {
 
 body {
   margin: 0;
+  margin-bottom: 55px;
   font-size: 16px;
-  /* margin-top: 60px; */
   background-color: #1f1f1f;
   color: white;
   
